@@ -8,7 +8,7 @@ data = df['address'].values
 son = data[:1]
 errorCount = 0
 
-def address2latitude(item):
+def address2latitude(item, index):
     if item != 0:
         print(item)
         url = "http://api.map.baidu.com/geocoding/v3/"
@@ -22,6 +22,8 @@ def address2latitude(item):
         obj = json.load(r.text)
         if obj.status == 0:
             print(obj.result.loaction)
+    else:
+        str = '暂无数据'
 
 for index in range(len(son)):
-    address2latitude(son[index])
+    address2latitude(son[index], index)
